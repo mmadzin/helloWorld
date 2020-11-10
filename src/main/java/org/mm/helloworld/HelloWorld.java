@@ -7,6 +7,7 @@ package org.mm.helloworld;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.net.InetAddress;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -31,15 +32,18 @@ public class HelloWorld extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
+        String ip;
         try {
             /* TODO output your page here. You may use following sample code. */
+            ip = InetAddress.getLocalHost().getHostAddress();
+            
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
             out.println("<title>Servlet NewServlet</title>");            
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet NewServlet at " + request.getContextPath() + "</h1>");
+            out.println("<h1>Hello World servlet deployed on: " + ip + "</h1>");
             out.println("</body>");
             out.println("</html>");
         } finally {
