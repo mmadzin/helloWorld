@@ -8,6 +8,7 @@ package org.mm.helloworld;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.net.InetAddress;
+import java.util.Random;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -17,7 +18,8 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author mmadzin
  */
-public class HelloWorld extends HttpServlet {
+public class TestApp extends HttpServlet {
+    private int random_number = 0;
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -33,6 +35,12 @@ public class HelloWorld extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
         String ip;
+
+	if(random_number == 0) {
+		Random rand = new Random();
+		random_number = rand.nextInt(99999) + 1;
+	}
+
         try {
             /* TODO output your page here. You may use following sample code. */
             ip = InetAddress.getLocalHost().getHostAddress();
@@ -43,7 +51,8 @@ public class HelloWorld extends HttpServlet {
             out.println("<title>Servlet NewServlet</title>");            
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Hello World servlet deployed on: " + ip + "</h1>");
+            out.println("<h1>Number: " + String.format("%05d", random_number) + " </h1>");
+            out.println("<h1>IP: " + ip + "</h1>");
             out.println("</body>");
             out.println("</html>");
         } finally {
