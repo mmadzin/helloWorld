@@ -51,6 +51,7 @@ public class TestApp extends HttpServlet {
             out.println("<title>Servlet NewServlet</title>");            
             out.println("</head>");
             out.println("<body>");
+	    out.println("<h1>Hello World</h1>");
             out.println("<h1>Number: " + String.format("%05d", random_number) + " </h1>");
             out.println("<h1>IP: " + ip + "</h1>");
             out.println("</body>");
